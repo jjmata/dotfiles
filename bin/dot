@@ -2,8 +2,9 @@
 #
 # dot
 #
-# `dot` handles installation, updates, things like that. Run it periodically
-# to make sure you're on the latest and greatest.
+# `dot` is a system-maintenance command. It pulls this repository, changes
+# macOS defaults and the hostname, updates and upgrades Homebrew packages, and
+# runs every topic installer. Review incoming changes before running it.
 
 set -e
 
