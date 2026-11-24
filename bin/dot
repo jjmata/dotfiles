@@ -59,7 +59,9 @@ echo "› brew update"
 brew update
 
 echo "› brew upgrade"
-brew upgrade --no-ask
+# Ask mode is Homebrew's default: it prints the upgrade plan and prompts for
+# confirmation before downloading. Keep it so `dot` never upgrades unattended.
+brew upgrade
 
 # Install software
 echo "› script/install"
