@@ -61,10 +61,25 @@ Everything is configured and tweaked within `~/.dotfiles`.
 The main file you'll want to change right off the bat is `zsh/zshrc.symlink`,
 which sets up a few paths that'll be different on your particular machine.
 
-`dot` is a simple script that installs some dependencies, sets sane macOS
-defaults, and so on. Tweak this script, and occasionally run `dot` from
-time to time to keep your environment fresh and up-to-date. You can find
-this script in `bin/`.
+`dot` is a system-maintenance command, not a passive dotfile refresh. It pulls
+this repository, applies macOS defaults and a hostname, runs `brew update` and
+`brew upgrade`, installs the Brewfile, and executes every topic `install.sh`.
+Review the pending repository and package changes before running it. Homebrew
+must be installed separately using the instructions at
+[docs.brew.sh/Installation](https://docs.brew.sh/Installation).
+
+## upstream trust policy
+
+Files merged from upstream can run automatically when a new shell starts, and
+`dot` can execute installers and package-manager changes. The default policy for
+this fork is therefore to cherry-pick only understood upstream changes. Before
+cherry-picking, review the full diff, with particular attention to `.zsh` files,
+executables, installers, the Brewfile, taps, and network downloads.
+
+If a bulk upstream merge is ever necessary, review the complete upstream diff
+before merging and apply the same checks. Do not run `dot` until that review is
+complete. Inspect new Brewfile taps, formulae, and casks, and run
+`brew bundle check` before installing changes.
 
 ## bugs
 

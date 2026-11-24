@@ -2,8 +2,9 @@
 #
 # dot
 #
-# `dot` handles installation, updates, things like that. Run it periodically
-# to make sure you're on the latest and greatest.
+# `dot` is a system-maintenance command. It pulls this repository, changes
+# macOS defaults and the hostname, updates and upgrades Homebrew packages, and
+# runs every topic installer. Review incoming changes before running it.
 
 set -e
 
@@ -58,7 +59,9 @@ echo "› brew update"
 brew update
 
 echo "› brew upgrade"
-brew upgrade --no-ask
+# Ask mode is Homebrew's default: it prints the upgrade plan and prompts for
+# confirmation before downloading. Keep it so `dot` never upgrades unattended.
+brew upgrade
 
 # Install software
 echo "› script/install"
